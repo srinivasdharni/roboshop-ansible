@@ -1,0 +1,12 @@
+- name: Copy Mongo File
+  ansible.builtin.template:
+    src: mongo.repo
+    dest: /etc/yum.repos.d/mongod.repo
+    
+- name: Install MongoDB   Shell to load Schema
+  ansible.builtin.dnf:
+    name: mongodb-org-shell
+    state: installed
+    
+- name: Load Schema
+  ansible.builtin.shell: mongo {{ lookup('aws_ssm', '{{env}}.roboshop.{{component}}.MONGO_ENDPOINT', region='us-east-1' ) }} --host  </app/schema/{{component}}.js

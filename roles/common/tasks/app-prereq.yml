@@ -1,0 +1,14 @@
+- name: Create Application User
+  ansible.builtin.user:
+    name: roboshop
+
+- name: Load App Clean
+  ansible.builtin.import_tasks:
+    file: app-pre-clean.yml
+
+- name: Download App
+  ansible.builtin.import_tasks:
+    file: app-download.yml
+    
+
+    
