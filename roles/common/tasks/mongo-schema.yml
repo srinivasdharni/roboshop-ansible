@@ -1,7 +1,7 @@
 - name: Copy Mongo File
   ansible.builtin.template:
     src: mongo.repo
-    dest: /etc/yum.repos.d/mongod.repo
+    dest: /etc/yum.repos.d/mongo.repo
     
 - name: Install MongoDB   Shell to load Schema
   ansible.builtin.dnf:
